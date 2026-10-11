@@ -1,0 +1,862 @@
+{
+  "id": "ollama-qwen2-5-3b",
+  "label": "Local LLM · Ollama · qwen2.5:3b",
+  "kind": "llm",
+  "provider": "ollama",
+  "model": "qwen2.5:3b",
+  "hosting": "local",
+  "privacy": "Local; nothing leaves your machine",
+  "setup": "Docker (npm run llm:up) or native Ollama, plus a 2–5 GB model",
+  "cost": "Free (your CPU/GPU)",
+  "determinism": "Temperature 0 + seed; plans replay without the model",
+  "domain": "Any UI the model can read",
+  "available": true,
+  "intents": [
+    {
+      "intent": "valid-card",
+      "name": "Complete checkout with a valid credit card",
+      "runs": [
+        {
+          "detail": {
+            "reason": null,
+            "steps": [
+              {
+                "description": "click button \"Checkout\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "llm",
+                "reason": "Fill Card number field with provided card number."
+              },
+              {
+                "description": "fill textbox \"Name on card\"",
+                "source": "llm",
+                "reason": "All fields need to be filled including the full name for the order."
+              },
+              {
+                "description": "fill textbox \"Expiry (MM/YY)\"",
+                "source": "llm",
+                "reason": "Expiry field is empty and needs to be filled with data."
+              },
+              {
+                "description": "fill textbox \"CVV\"",
+                "source": "llm",
+                "reason": "CVV is required for the payment process"
+              },
+              {
+                "description": "check checkbox \"I agree to the Terms & Conditions\"",
+                "source": "llm",
+                "reason": "Terms & Conditions checkbox is unchecked"
+              },
+              {
+                "description": "fill textbox \"Email address\"",
+                "source": "llm",
+                "reason": "Complete checkout with a valid credit card"
+              },
+              {
+                "description": "fill textbox \"Phone number\"",
+                "source": "llm",
+                "reason": "Phone number is empty and required for checkout."
+              },
+              {
+                "description": "fill textbox \"Full name\"",
+                "source": "llm",
+                "reason": "complete checkout with a valid credit card"
+              },
+              {
+                "description": "fill textbox \"Street address\"",
+                "source": "llm",
+                "reason": "address field is empty and needs to be filled with the provided address data."
+              },
+              {
+                "description": "fill textbox \"City\"",
+                "source": "llm",
+                "reason": "City field is empty and needs to be filled with 'Bengaluru' to proceed."
+              },
+              {
+                "description": "fill textbox \"ZIP code\"",
+                "source": "llm",
+                "reason": "ZIP code field is empty and needs to be filled with the provided zip value."
+              },
+              {
+                "description": "click button \"Pay now\"",
+                "source": "rules-fallback",
+                "reason": null
+              }
+            ],
+            "llmSummary": null,
+            "evidence": null,
+            "secondOpinion": null,
+            "screenshots": {
+              "final": "comparison/screenshots/ollama-qwen2-5-3b/20261011072612-03mt-final.png"
+            }
+          },
+          "stage": "A",
+          "title": "Derive plan from intent (original UI)",
+          "status": "passed",
+          "mode": "recorded",
+          "correct": true,
+          "ms": 107165,
+          "calls": 17,
+          "llmMs": 105308,
+          "fallbacks": 2,
+          "steps": {
+            "llm": 11,
+            "rules": 0,
+            "fallback": 2
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "detail": {
+            "reason": null,
+            "brokeAt": {
+              "step": "click button \"Checkout\"",
+              "problem": "element not found"
+            },
+            "steps": [
+              {
+                "description": "click button \"Continue to shipping\"",
+                "source": "llm",
+                "reason": "No promo code entered, need to apply before continuing."
+              },
+              {
+                "description": "fill textbox \"Street address\"",
+                "source": "llm",
+                "reason": "address data is missing and needs to be filled."
+              },
+              {
+                "description": "fill textbox \"City\"",
+                "source": "llm",
+                "reason": "City field is empty and needs to be filled with data."
+              },
+              {
+                "description": "fill textbox \"Full name\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Mobile number\"",
+                "source": "llm",
+                "reason": "Complete contact information with phone number."
+              },
+              {
+                "description": "click button \"Continue to payment\"",
+                "source": "llm",
+                "reason": "Continue to payment button is the next step towards completing the checkout process."
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "llm",
+                "reason": "Card number textbox is empty and needs to be filled with the provided card number."
+              },
+              {
+                "description": "fill textbox \"Expiry date\"",
+                "source": "llm",
+                "reason": "Set expiry date as it is required for the payment process."
+              },
+              {
+                "description": "fill textbox \"Security code\"",
+                "source": "llm",
+                "reason": "Expiry date and CVV are required fields for a valid credit card transaction."
+              },
+              {
+                "description": "check checkbox \"I accept the terms and conditions\"",
+                "source": "llm",
+                "reason": "terms and conditions checkbox is unchecked"
+              },
+              {
+                "description": "click button \"Place order\"",
+                "source": "llm",
+                "reason": "Place order button is the next actionable step towards completing the checkout process."
+              }
+            ],
+            "changes": [
+              {
+                "kind": "renamed",
+                "text": "\"Checkout\" → \"Continue to shipping\""
+              },
+              {
+                "kind": "selector",
+                "text": "#checkout-button → #root > main > section > aside > button"
+              },
+              {
+                "kind": "selector",
+                "text": "#card-number → input[aria-label=\"Card number\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Name on card\" → \"Full name\""
+              },
+              {
+                "kind": "selector",
+                "text": "#card-name → input[aria-label=\"Full name\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Expiry (MM/YY)\" → \"Expiry date\""
+              },
+              {
+                "kind": "selector",
+                "text": "#expiry → input[aria-label=\"Expiry date\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"CVV\" → \"Security code\""
+              },
+              {
+                "kind": "selector",
+                "text": "#cvv → input[aria-label=\"Security code\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"I agree to the Terms & Conditions\" → \"I accept the terms and conditions\""
+              },
+              {
+                "kind": "selector",
+                "text": "#terms → #root > main > section > label:nth-of-type(2) > input"
+              },
+              {
+                "kind": "removed",
+                "text": "fill textbox \"Email address\" (#email) no longer needed"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Phone number\" → \"Mobile number\""
+              },
+              {
+                "kind": "selector",
+                "text": "#phone → input[aria-label=\"Mobile number\"]"
+              },
+              {
+                "kind": "removed",
+                "text": "fill textbox \"Full name\" (#full-name) no longer needed"
+              },
+              {
+                "kind": "selector",
+                "text": "#street → input[aria-label=\"Street address\"]"
+              },
+              {
+                "kind": "selector",
+                "text": "#city → input[aria-label=\"City\"]"
+              },
+              {
+                "kind": "removed",
+                "text": "fill textbox \"ZIP code\" (#zip) no longer needed"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Pay now\" → \"Place order\""
+              },
+              {
+                "kind": "selector",
+                "text": "#pay-btn → #root > main > section > div > button:nth-of-type(2)"
+              },
+              {
+                "kind": "added",
+                "text": "new step: click button \"Continue to payment\""
+              }
+            ],
+            "llmSummary": "The interface was renamed and updated with new selectors for elements like 'Checkout' to 'Continue to Payment', 'Card number' to 'Input[aria-label='Card number']', and 'Expiry (MM/YY)' to 'Input[aria-label='Expiry date']'. A genuine application bug occurred at the step of clicking the 'Checkout' button, as it was no longer found. No harmful changes were made, but the user experience was altered due to the renamed elements and the broken step in the process.",
+            "evidence": null,
+            "secondOpinion": null,
+            "screenshots": {
+              "broke": "comparison/screenshots/ollama-qwen2-5-3b/20261011072759-lhrn-broke.png",
+              "final": "comparison/screenshots/ollama-qwen2-5-3b/20261011072759-lhrn-final.png"
+            }
+          },
+          "stage": "B",
+          "title": "Heal wizard redesign",
+          "status": "healed",
+          "mode": "replan",
+          "correct": true,
+          "ms": 84724,
+          "calls": 18,
+          "llmMs": 72489,
+          "fallbacks": 1,
+          "steps": {
+            "llm": 10,
+            "rules": 0,
+            "fallback": 1
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "detail": {
+            "reason": null,
+            "brokeAt": {
+              "step": "click button \"Continue to shipping\"",
+              "problem": "element not found"
+            },
+            "steps": [
+              {
+                "description": "fill textbox \"E-mail\"",
+                "source": "llm",
+                "reason": "Email field is required for the next step."
+              },
+              {
+                "description": "fill textbox \"Mobile number\"",
+                "source": "llm",
+                "reason": "Phone number is required for checkout."
+              },
+              {
+                "description": "click button \"Next\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "click button \"Next\"",
+                "source": "llm",
+                "reason": "Move towards payment by clicking 'Next' button"
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Cardholder name\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Valid thru (MM/YY)\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"CVC\"",
+                "source": "llm",
+                "reason": "CVC field is empty and required for completing the purchase."
+              },
+              {
+                "description": "click button \"Complete purchase\"",
+                "source": "llm",
+                "reason": "Complete purchase button is the next action towards the goal of completing the checkout with a valid credit card."
+              }
+            ],
+            "changes": [
+              {
+                "kind": "renamed",
+                "text": "\"Continue to shipping\" → \"Next\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > aside > button → #root > main > section:nth-of-type(2) > button"
+              },
+              {
+                "kind": "removed",
+                "text": "fill textbox \"Street address\" (input[aria-label=\"Street address\"]) no longer needed"
+              },
+              {
+                "kind": "removed",
+                "text": "fill textbox \"City\" (input[aria-label=\"City\"]) no longer needed"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Full name\" → \"Cardholder name\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Full name\"] → input[aria-label=\"Cardholder name\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Continue to payment\" → \"Next\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > button:nth-of-type(2) → #root > main > section:nth-of-type(3) > button"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Expiry date\" → \"Valid thru (MM/YY)\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Expiry date\"] → input[aria-label=\"Valid thru (MM/YY)\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Security code\" → \"CVC\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Security code\"] → input[aria-label=\"CVC\"]"
+              },
+              {
+                "kind": "removed",
+                "text": "check checkbox \"I accept the terms and conditions\" (#root > main > section > label:nth-of-type(2) > input) no longer needed"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Place order\" → \"Complete purchase\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > div > button:nth-of-type(2) → #root > main > section:nth-of-type(4) > button"
+              },
+              {
+                "kind": "added",
+                "text": "new step: fill textbox \"E-mail\""
+              }
+            ],
+            "llmSummary": "In build version-d, the UI for the 'Complete Checkout' process was updated, including renamed and removed fields. The most notable changes were the renaming and repositioning of several UI elements such as 'Continue to Payment' to 'Next', 'Expiry date' to 'Valid thru (MM/YY)', and 'Security code' to 'CVC'. Additionally, a new step 'Fill textbox ",
+            "evidence": null,
+            "secondOpinion": null,
+            "screenshots": {
+              "broke": "comparison/screenshots/ollama-qwen2-5-3b/20261011072924-5tfy-broke.png",
+              "final": "comparison/screenshots/ollama-qwen2-5-3b/20261011072924-5tfy-final.png"
+            }
+          },
+          "stage": "D",
+          "title": "Heal accordion redesign",
+          "status": "healed",
+          "mode": "replan",
+          "correct": true,
+          "ms": 85337,
+          "calls": 16,
+          "llmMs": 74016,
+          "fallbacks": 4,
+          "steps": {
+            "llm": 5,
+            "rules": 0,
+            "fallback": 4
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "detail": {
+            "reason": "The UI changed, but even after re-deriving the workflow from the intent the application fails: The workflow was completed but the application reported an error instead of the expected outcome.",
+            "brokeAt": {
+              "step": "fill textbox \"E-mail\"",
+              "problem": "element not found"
+            },
+            "steps": [
+              {
+                "description": "click button \"Continue to shipping\"",
+                "source": "llm",
+                "reason": "No promo code entered, need to apply before continuing."
+              },
+              {
+                "description": "fill textbox \"Street address\"",
+                "source": "llm",
+                "reason": "address data is missing and needs to be filled in."
+              },
+              {
+                "description": "fill textbox \"City\"",
+                "source": "llm",
+                "reason": "City field is required and should be filled with data."
+              },
+              {
+                "description": "fill textbox \"Full name\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Mobile number\"",
+                "source": "llm",
+                "reason": "Complete contact information with phone number."
+              },
+              {
+                "description": "click button \"Continue to payment\"",
+                "source": "llm",
+                "reason": "Continue to payment button is the next step towards completing the checkout process."
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "llm",
+                "reason": "Fill Card number textbox with provided card number."
+              },
+              {
+                "description": "fill textbox \"Expiry date\"",
+                "source": "llm",
+                "reason": "Set expiry date as it is required for the payment process."
+              },
+              {
+                "description": "fill textbox \"Security code\"",
+                "source": "llm",
+                "reason": "All required fields for payment are incomplete and need to be filled."
+              },
+              {
+                "description": "click button \"Buy now\"",
+                "source": "llm",
+                "reason": "No other actions can move the goal forward without completing the payment details."
+              }
+            ],
+            "llmSummary": "The test failed because the UI changed, but the application reported an error instead of the expected outcome. Specifically, the 'E-mail' textbox could not be found, leading to the application failing the complete checkout process. The error message 'Something went wrong (error 500). Please try again later.' and the console error 'HTTP 500 POST /api/payments/v2, payment failed: 500' indicate that the application encountered a genuine bug, not a harmless UI change.",
+            "evidence": {
+              "alerts": [
+                "Something went wrong (error 500). Please try again later."
+              ],
+              "consoleErrors": [
+                "HTTP 500 POST /api/payments/v2",
+                "payment failed: 500"
+              ]
+            },
+            "secondOpinion": {
+              "confirmed": true
+            },
+            "screenshots": {
+              "broke": "comparison/screenshots/ollama-qwen2-5-3b/20261011073049-3oxi-broke.png",
+              "failure": "comparison/screenshots/ollama-qwen2-5-3b/20261011073049-3oxi-failure.png"
+            }
+          },
+          "stage": "C",
+          "title": "Report real bug (payments 500)",
+          "status": "failed",
+          "category": "application-failure",
+          "correct": true,
+          "ms": 56641,
+          "calls": 14,
+          "llmMs": 45039,
+          "fallbacks": 1,
+          "steps": {
+            "llm": 0,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": "confirmed",
+          "note": "The UI changed, but even after re-deriving the workflow from the intent the application fails: The workflow was completed but the application reported an error "
+        }
+      ]
+    },
+    {
+      "intent": "full",
+      "name": "Full journey: promo code + express delivery + card",
+      "runs": [
+        {
+          "detail": {
+            "reason": "Gave up after 30 steps.",
+            "steps": [],
+            "llmSummary": "The automated test for the 'Full journey: promo code + express delivery + card' test case in build 'version-a' failed due to giving up after 30 steps. This suggests a genuine application issue as the test did not complete successfully, indicating a potential UI or backend problem.",
+            "evidence": {},
+            "secondOpinion": null,
+            "screenshots": {
+              "failure": "comparison/screenshots/ollama-qwen2-5-3b/20261011073146-sxi1-failure.png"
+            }
+          },
+          "stage": "A",
+          "title": "Derive plan from intent (original UI)",
+          "status": "failed",
+          "category": "unresolved",
+          "correct": false,
+          "ms": 219951,
+          "calls": 34,
+          "llmMs": 211637,
+          "fallbacks": 4,
+          "steps": {
+            "llm": 0,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": "Gave up after 30 steps."
+        },
+        {
+          "detail": {
+            "reason": null,
+            "steps": [
+              {
+                "description": "fill textbox \"Promo code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Apply\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Continue to shipping\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Full name\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Email address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Mobile number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Street address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"City\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Postal code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check radio \"Express delivery (1–2 days) — $9.00\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Continue to payment\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Expiry date\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Security code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check checkbox \"I accept the terms and conditions\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Place order\"",
+                "source": "rules",
+                "reason": null
+              }
+            ],
+            "llmSummary": null,
+            "evidence": null,
+            "secondOpinion": {
+              "overruled": "The outcome appeared, but the expected detail /\\$74\\.70/ is not on the page (wrong amount or content)."
+            },
+            "screenshots": {
+              "final": "comparison/screenshots/ollama-qwen2-5-3b/20261011073526-hz9t-final.png"
+            }
+          },
+          "stage": "B",
+          "title": "Heal wizard redesign",
+          "status": "passed",
+          "mode": "recorded",
+          "correct": true,
+          "ms": 73784,
+          "calls": 18,
+          "llmMs": 69925,
+          "fallbacks": 2,
+          "steps": {
+            "llm": 0,
+            "rules": 16,
+            "fallback": 0
+          },
+          "secondOpinion": "overruled",
+          "note": null
+        },
+        {
+          "detail": {
+            "reason": "No visible control moves the workflow toward the goal.",
+            "brokeAt": {
+              "step": "fill textbox \"Promo code\"",
+              "problem": "element not found"
+            },
+            "steps": [
+              {
+                "description": "fill textbox \"Discount code\"",
+                "source": "llm",
+                "reason": "Apply promo code SAVE10 to save 10% on order."
+              },
+              {
+                "description": "click button \"Redeem\"",
+                "source": "llm",
+                "reason": "Apply promo code SAVE10 before continuing"
+              },
+              {
+                "description": "fill textbox \"E-mail\"",
+                "source": "llm",
+                "reason": "No email provided, need to fill the empty email textbox to proceed."
+              },
+              {
+                "description": "fill textbox \"Mobile number\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "click button \"Redeem\"",
+                "source": "llm",
+                "reason": "Apply express delivery option"
+              },
+              {
+                "description": "click button \"Decrease quantity of Merino Socks (2 pack)\"",
+                "source": "llm",
+                "reason": "Choose express delivery option"
+              },
+              {
+                "description": "click button \"Decrease quantity of Merino Socks (2 pack)\"",
+                "source": "llm",
+                "reason": "Apply express delivery option"
+              },
+              {
+                "description": "click button \"Next\"",
+                "source": "llm",
+                "reason": "Set express delivery by clicking the Next button to proceed with payment"
+              },
+              {
+                "description": "fill textbox \"Recipient name\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Address line\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Town / city\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Postcode\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "check radio \"Express delivery (1–2 days) — $9.00\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "click button \"Next\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "click button \"Complete purchase\"",
+                "source": "llm",
+                "reason": "Complete purchase button is the final step after all required fields are filled."
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Cardholder name\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Valid thru (MM/YY)\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"CVC\"",
+                "source": "rules-fallback",
+                "reason": null
+              },
+              {
+                "description": "check checkbox \"I agree to the terms of sale\"",
+                "source": "rules-fallback",
+                "reason": null
+              }
+            ],
+            "llmSummary": "The test failed at the step where the promo code is filled, as the promo code input field could not be located. This is likely a UI change, as the promo code input field is missing or not properly rendered in build version-d. The issue prevents the promo code from being applied, which could be a harmless UI change or a genuine application bug depending on the intended functionality of the promo code input field.",
+            "evidence": {
+              "alerts": [
+                "Your card was declined. Check the details and try again."
+              ],
+              "consoleErrors": [
+                "HTTP 402 POST /api/pay",
+                "payment failed: 402"
+              ]
+            },
+            "secondOpinion": null,
+            "screenshots": {
+              "broke": "comparison/screenshots/ollama-qwen2-5-3b/20261011073639-93h4-broke.png",
+              "failure": "comparison/screenshots/ollama-qwen2-5-3b/20261011073639-93h4-failure.png"
+            }
+          },
+          "stage": "D",
+          "title": "Heal accordion redesign",
+          "status": "failed",
+          "category": "unresolved",
+          "correct": false,
+          "ms": 169001,
+          "calls": 37,
+          "llmMs": 159640,
+          "fallbacks": 13,
+          "steps": {
+            "llm": 0,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": "No visible control moves the workflow toward the goal."
+        },
+        {
+          "detail": {
+            "reason": "All recorded steps executed, but the expected outcome never appeared.",
+            "steps": [],
+            "healedLocators": [],
+            "llmSummary": "In the Full journey test, applying a promo code, selecting express delivery, and using a card for payment resulted in an application failure. The error 500 was logged in the console and alerts, indicating that the payment process failed. This is a genuine application bug as the expected outcome (payment success) did not appear, despite all steps being executed as expected.",
+            "evidence": {
+              "alerts": [
+                "Something went wrong (error 500). Please try again later."
+              ],
+              "consoleErrors": [
+                "HTTP 500 POST /api/payments/v2",
+                "payment failed: 500"
+              ],
+              "apiCalls": [
+                {
+                  "method": "POST",
+                  "path": "/api/payments/v2",
+                  "status": 500
+                }
+              ]
+            },
+            "secondOpinion": null,
+            "screenshots": {
+              "failure": "comparison/screenshots/ollama-qwen2-5-3b/20261011073928-ytl9-failure.png"
+            }
+          },
+          "stage": "C",
+          "title": "Report real bug (payments 500)",
+          "status": "failed",
+          "category": "application-failure",
+          "correct": true,
+          "ms": 5829,
+          "calls": 0,
+          "llmMs": 0,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 0,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": "All recorded steps executed, but the expected outcome never appeared."
+        }
+      ]
+    }
+  ],
+  "generatedAt": "2026-10-11T07:26:12.368Z"
+}

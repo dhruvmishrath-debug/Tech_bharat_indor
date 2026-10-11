@@ -1,0 +1,22 @@
+{
+  "id": "checkout-declined-card",
+  "name": "Declined card shows an error and creates no order",
+  "intent": "Try to pay with a card the bank declines. The customer must see a clear decline message and no order may be confirmed.",
+  "data": {
+    "name": "Asha Verma",
+    "email": "asha@example.com",
+    "phone": "9876543210",
+    "address": "12 MG Road",
+    "city": "Bengaluru",
+    "zip": "560001",
+    "cardNumber": "4242 4242 4242 4241",
+    "expiry": "12/30",
+    "cvv": "123"
+  },
+  "expect": {
+    "outcome": "card declined",
+    "absent": [
+      "order confirmed"
+    ]
+  }
+}

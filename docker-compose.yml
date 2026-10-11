@@ -1,0 +1,19 @@
+# Local open-source LLM in a container (Ollama). The engine talks to it at http://localhost:11434, same as a native install.
+#   npm run llm:up      start it and pull a small model (default qwen2.5:3b, ~2 GB)
+#   npm run llm:down    stop it (downloaded models stay in the volume)
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: selfheal-ollama
+    ports:
+      - "127.0.0.1:11434:11434"      # localhost only
+    volumes:
+      - ollama-models:/root/.ollama  # models survive restarts
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+volumes:
+  ollama-models:

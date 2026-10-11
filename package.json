@@ -1,0 +1,40 @@
+{
+  "name": "self-healing-tests",
+  "version": "1.0.0",
+  "description": "Intent-aware end-to-end tests that survive interface changes",
+  "type": "module",
+  "scripts": {
+    "demo": "node engine/demo.js",
+    "build:web": "vite build",
+    "dev:web": "vite",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "dashboard": "node engine/dashboard.js --serve",
+    "dashboard:build": "node engine/dashboard.js",
+    "test": "playwright test",
+    "demo:llm": "PLANNER=llm node engine/demo.js",
+    "test:llm": "playwright test tests/e2e/llm-live.spec.js",
+    "llm:status": "node -e \"import('./engine/llm.js').then(async m=>console.log(m.LLM_MODEL(),await m.llmStatus()))\"",
+    "llm:up": "docker compose up -d --wait ; docker compose exec ollama ollama pull ${LLM_MODEL:-qwen2.5:3b}",
+    "llm:down": "docker compose down",
+    "demo:llm:docker": "LLM_MODEL=${LLM_MODEL:-qwen2.5:3b} PLANNER=llm node engine/demo.js",
+    "test:llm:docker": "LLM_MODEL=${LLM_MODEL:-qwen2.5:3b} playwright test tests/e2e/llm-live.spec.js",
+    "demo:groq": "LLM_PROVIDER=groq PLANNER=llm node engine/demo.js",
+    "test:groq": "LLM_PROVIDER=groq playwright test tests/e2e/llm-live.spec.js",
+    "compare": "node engine/compare.js",
+    "compare:report": "node engine/compare.js --report"
+  },
+  "dependencies": {
+    "playwright": "^1.64.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64",
+    "@vitejs/plugin-react": "^4.7.0",
+    "vite": "^5.4.21"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,1283 @@
+{
+  "id": "rules",
+  "label": "Rule-based (no LLM)",
+  "kind": "rules",
+  "hosting": "none",
+  "privacy": "Local; nothing is sent anywhere",
+  "setup": "None",
+  "cost": "Free",
+  "determinism": "Fully deterministic",
+  "domain": "Checkout-style flows; new vocabulary needs code",
+  "available": true,
+  "intents": [
+    {
+      "intent": "valid-card",
+      "name": "Complete checkout with a valid credit card",
+      "runs": [
+        {
+          "detail": {
+            "reason": null,
+            "steps": [
+              {
+                "description": "click button \"Checkout\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Email address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Phone number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Full name\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Street address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"City\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"ZIP code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Name on card\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Expiry (MM/YY)\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"CVV\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check checkbox \"I agree to the Terms & Conditions\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Pay now\"",
+                "source": "rules",
+                "reason": null
+              }
+            ],
+            "llmSummary": null,
+            "evidence": null,
+            "secondOpinion": null,
+            "screenshots": {
+              "final": "comparison/screenshots/rules/20261011072545-a6dx-final.png"
+            }
+          },
+          "stage": "A",
+          "title": "Derive plan from intent (original UI)",
+          "status": "passed",
+          "mode": "recorded",
+          "correct": true,
+          "ms": 1770,
+          "calls": 0,
+          "llmMs": 0,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 0,
+            "rules": 13,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "detail": {
+            "reason": null,
+            "brokeAt": {
+              "step": "click button \"Checkout\"",
+              "problem": "element not found"
+            },
+            "steps": [
+              {
+                "description": "click button \"Continue to shipping\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Full name\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Email address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Mobile number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Street address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"City\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Postal code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Continue to payment\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Expiry date\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Security code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check checkbox \"I accept the terms and conditions\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Place order\"",
+                "source": "rules",
+                "reason": null
+              }
+            ],
+            "changes": [
+              {
+                "kind": "renamed",
+                "text": "\"Checkout\" → \"Continue to shipping\""
+              },
+              {
+                "kind": "selector",
+                "text": "#checkout-button → #root > main > section > aside > button"
+              },
+              {
+                "kind": "selector",
+                "text": "#email → input[aria-label=\"Email address\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Phone number\" → \"Mobile number\""
+              },
+              {
+                "kind": "selector",
+                "text": "#phone → input[aria-label=\"Mobile number\"]"
+              },
+              {
+                "kind": "selector",
+                "text": "#full-name → input[aria-label=\"Full name\"]"
+              },
+              {
+                "kind": "selector",
+                "text": "#street → input[aria-label=\"Street address\"]"
+              },
+              {
+                "kind": "selector",
+                "text": "#city → input[aria-label=\"City\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"ZIP code\" → \"Postal code\""
+              },
+              {
+                "kind": "selector",
+                "text": "#zip → input[aria-label=\"Postal code\"]"
+              },
+              {
+                "kind": "selector",
+                "text": "#card-number → input[aria-label=\"Card number\"]"
+              },
+              {
+                "kind": "removed",
+                "text": "fill textbox \"Name on card\" (#card-name) no longer needed"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Expiry (MM/YY)\" → \"Expiry date\""
+              },
+              {
+                "kind": "selector",
+                "text": "#expiry → input[aria-label=\"Expiry date\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"CVV\" → \"Security code\""
+              },
+              {
+                "kind": "selector",
+                "text": "#cvv → input[aria-label=\"Security code\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"I agree to the Terms & Conditions\" → \"I accept the terms and conditions\""
+              },
+              {
+                "kind": "selector",
+                "text": "#terms → #root > main > section > label:nth-of-type(2) > input"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Pay now\" → \"Place order\""
+              },
+              {
+                "kind": "selector",
+                "text": "#pay-btn → #root > main > section > div > button:nth-of-type(2)"
+              },
+              {
+                "kind": "added",
+                "text": "new step: click button \"Continue to payment\""
+              }
+            ],
+            "llmSummary": null,
+            "evidence": null,
+            "secondOpinion": null,
+            "screenshots": {
+              "broke": "comparison/screenshots/rules/20261011072547-9egy-broke.png",
+              "final": "comparison/screenshots/rules/20261011072547-9egy-final.png"
+            }
+          },
+          "stage": "B",
+          "title": "Heal wizard redesign",
+          "status": "healed",
+          "mode": "replan",
+          "correct": true,
+          "ms": 1965,
+          "calls": 0,
+          "llmMs": 0,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 0,
+            "rules": 13,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "detail": {
+            "reason": null,
+            "brokeAt": {
+              "step": "click button \"Continue to shipping\"",
+              "problem": "element not found"
+            },
+            "steps": [
+              {
+                "description": "fill textbox \"E-mail\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Mobile number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Next\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Recipient name\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Address line\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Town / city\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Postcode\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Next\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Cardholder name\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Valid thru (MM/YY)\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"CVC\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check checkbox \"I agree to the terms of sale\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Complete purchase\"",
+                "source": "rules",
+                "reason": null
+              }
+            ],
+            "changes": [
+              {
+                "kind": "renamed",
+                "text": "\"Continue to shipping\" → \"Next\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > aside > button → #root > main > section:nth-of-type(2) > button"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Full name\" → \"Recipient name\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Full name\"] → input[aria-label=\"Recipient name\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Email address\" → \"E-mail\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Email address\"] → input[aria-label=\"E-mail\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Street address\" → \"Address line\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Street address\"] → input[aria-label=\"Address line\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"City\" → \"Town / city\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"City\"] → input[aria-label=\"Town / city\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Postal code\" → \"Postcode\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Postal code\"] → input[aria-label=\"Postcode\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Continue to payment\" → \"Next\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > button:nth-of-type(2) → #root > main > section:nth-of-type(3) > button"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Expiry date\" → \"Valid thru (MM/YY)\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Expiry date\"] → input[aria-label=\"Valid thru (MM/YY)\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Security code\" → \"CVC\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Security code\"] → input[aria-label=\"CVC\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"I accept the terms and conditions\" → \"I agree to the terms of sale\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > label:nth-of-type(2) > input → #root > main > section:nth-of-type(4) > label > input"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Place order\" → \"Complete purchase\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > div > button:nth-of-type(2) → #root > main > section:nth-of-type(4) > button"
+              },
+              {
+                "kind": "added",
+                "text": "new step: fill textbox \"Cardholder name\""
+              }
+            ],
+            "llmSummary": null,
+            "evidence": null,
+            "secondOpinion": null,
+            "screenshots": {
+              "broke": "comparison/screenshots/rules/20261011072549-bccu-broke.png",
+              "final": "comparison/screenshots/rules/20261011072549-bccu-final.png"
+            }
+          },
+          "stage": "D",
+          "title": "Heal accordion redesign",
+          "status": "healed",
+          "mode": "replan",
+          "correct": true,
+          "ms": 2103,
+          "calls": 0,
+          "llmMs": 0,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 0,
+            "rules": 14,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "detail": {
+            "reason": "The UI changed, but even after re-deriving the workflow from the intent the application fails: The workflow was completed but the application reported an error instead of the expected outcome.",
+            "brokeAt": {
+              "step": "fill textbox \"E-mail\"",
+              "problem": "element not found"
+            },
+            "steps": [
+              {
+                "description": "click button \"Continue to shipping\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Full name\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Email address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Mobile number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Street address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"City\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Postal code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Continue to payment\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Expiry date\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Security code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check checkbox \"I accept the terms and conditions\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Buy now\"",
+                "source": "rules",
+                "reason": null
+              }
+            ],
+            "llmSummary": null,
+            "evidence": {
+              "alerts": [
+                "Something went wrong (error 500). Please try again later."
+              ],
+              "consoleErrors": [
+                "HTTP 500 POST /api/payments/v2",
+                "payment failed: 500"
+              ]
+            },
+            "secondOpinion": null,
+            "screenshots": {
+              "broke": "comparison/screenshots/rules/20261011072551-vvq9-broke.png",
+              "failure": "comparison/screenshots/rules/20261011072551-vvq9-failure.png"
+            }
+          },
+          "stage": "C",
+          "title": "Report real bug (payments 500)",
+          "status": "failed",
+          "category": "application-failure",
+          "correct": true,
+          "ms": 1966,
+          "calls": 0,
+          "llmMs": 0,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 0,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": "The UI changed, but even after re-deriving the workflow from the intent the application fails: The workflow was completed but the application reported an error "
+        }
+      ]
+    },
+    {
+      "intent": "full",
+      "name": "Full journey: promo code + express delivery + card",
+      "runs": [
+        {
+          "detail": {
+            "reason": null,
+            "steps": [
+              {
+                "description": "fill textbox \"Promo code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Apply\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Checkout\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Email address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Phone number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Full name\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Street address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"City\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"ZIP code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Name on card\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Expiry (MM/YY)\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"CVV\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check radio \"Express delivery (1–2 days) — $9.00\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check checkbox \"I agree to the Terms & Conditions\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Pay now\"",
+                "source": "rules",
+                "reason": null
+              }
+            ],
+            "llmSummary": null,
+            "evidence": null,
+            "secondOpinion": null,
+            "screenshots": {
+              "final": "comparison/screenshots/rules/20261011072553-s9ry-final.png"
+            }
+          },
+          "stage": "A",
+          "title": "Derive plan from intent (original UI)",
+          "status": "passed",
+          "mode": "recorded",
+          "correct": true,
+          "ms": 2021,
+          "calls": 0,
+          "llmMs": 0,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 0,
+            "rules": 16,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "detail": {
+            "reason": null,
+            "brokeAt": {
+              "step": "click button \"Checkout\"",
+              "problem": "element not found"
+            },
+            "steps": [
+              {
+                "description": "fill textbox \"Promo code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Apply\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Continue to shipping\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Full name\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Email address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Mobile number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Street address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"City\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Postal code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check radio \"Express delivery (1–2 days) — $9.00\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Continue to payment\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Expiry date\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Security code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check checkbox \"I accept the terms and conditions\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Place order\"",
+                "source": "rules",
+                "reason": null
+              }
+            ],
+            "changes": [
+              {
+                "kind": "selector",
+                "text": "#cart > div > button → #root > main > section > aside > div > button"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Checkout\" → \"Continue to shipping\""
+              },
+              {
+                "kind": "selector",
+                "text": "#checkout-button → #root > main > section > aside > button"
+              },
+              {
+                "kind": "selector",
+                "text": "#email → input[aria-label=\"Email address\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Phone number\" → \"Mobile number\""
+              },
+              {
+                "kind": "selector",
+                "text": "#phone → input[aria-label=\"Mobile number\"]"
+              },
+              {
+                "kind": "selector",
+                "text": "#full-name → input[aria-label=\"Full name\"]"
+              },
+              {
+                "kind": "selector",
+                "text": "#street → input[aria-label=\"Street address\"]"
+              },
+              {
+                "kind": "selector",
+                "text": "#city → input[aria-label=\"City\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"ZIP code\" → \"Postal code\""
+              },
+              {
+                "kind": "selector",
+                "text": "#zip → input[aria-label=\"Postal code\"]"
+              },
+              {
+                "kind": "selector",
+                "text": "#card-number → input[aria-label=\"Card number\"]"
+              },
+              {
+                "kind": "removed",
+                "text": "fill textbox \"Name on card\" (#card-name) no longer needed"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Expiry (MM/YY)\" → \"Expiry date\""
+              },
+              {
+                "kind": "selector",
+                "text": "#expiry → input[aria-label=\"Expiry date\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"CVV\" → \"Security code\""
+              },
+              {
+                "kind": "selector",
+                "text": "#cvv → input[aria-label=\"Security code\"]"
+              },
+              {
+                "kind": "selector",
+                "text": "#checkout-form > fieldset:nth-of-type(3) > label:nth-of-type(2) > input → #root > main > section > fieldset > label:nth-of-type(2) > input"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"I agree to the Terms & Conditions\" → \"I accept the terms and conditions\""
+              },
+              {
+                "kind": "selector",
+                "text": "#terms → #root > main > section > label:nth-of-type(2) > input"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Pay now\" → \"Place order\""
+              },
+              {
+                "kind": "selector",
+                "text": "#pay-btn → #root > main > section > div > button:nth-of-type(2)"
+              },
+              {
+                "kind": "added",
+                "text": "new step: click button \"Continue to payment\""
+              }
+            ],
+            "llmSummary": null,
+            "evidence": null,
+            "secondOpinion": null,
+            "screenshots": {
+              "broke": "comparison/screenshots/rules/20261011072555-6fkr-broke.png",
+              "final": "comparison/screenshots/rules/20261011072555-6fkr-final.png"
+            }
+          },
+          "stage": "B",
+          "title": "Heal wizard redesign",
+          "status": "healed",
+          "mode": "replan",
+          "correct": true,
+          "ms": 2496,
+          "calls": 0,
+          "llmMs": 0,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 0,
+            "rules": 16,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "detail": {
+            "reason": null,
+            "brokeAt": {
+              "step": "fill textbox \"Promo code\"",
+              "problem": "element not found"
+            },
+            "steps": [
+              {
+                "description": "fill textbox \"Discount code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"E-mail\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Mobile number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Redeem\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Next\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Recipient name\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Address line\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Town / city\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Postcode\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check radio \"Express delivery (1–2 days) — $9.00\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Next\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Cardholder name\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Valid thru (MM/YY)\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"CVC\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check checkbox \"I agree to the terms of sale\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Complete purchase\"",
+                "source": "rules",
+                "reason": null
+              }
+            ],
+            "changes": [
+              {
+                "kind": "renamed",
+                "text": "\"Promo code\" → \"Discount code\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Promo code\"] → input[aria-label=\"Discount code\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Apply\" → \"Redeem\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > aside > div > button → #root > main > section:nth-of-type(1) > div > button"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Continue to shipping\" → \"Next\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > aside > button → #root > main > section:nth-of-type(2) > button"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Full name\" → \"Recipient name\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Full name\"] → input[aria-label=\"Recipient name\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Email address\" → \"E-mail\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Email address\"] → input[aria-label=\"E-mail\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Street address\" → \"Address line\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Street address\"] → input[aria-label=\"Address line\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"City\" → \"Town / city\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"City\"] → input[aria-label=\"Town / city\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Postal code\" → \"Postcode\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Postal code\"] → input[aria-label=\"Postcode\"]"
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > fieldset > label:nth-of-type(2) > input → #root > main > section:nth-of-type(3) > fieldset > label:nth-of-type(2) > input"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Continue to payment\" → \"Next\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > button:nth-of-type(2) → #root > main > section:nth-of-type(3) > button"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Expiry date\" → \"Valid thru (MM/YY)\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Expiry date\"] → input[aria-label=\"Valid thru (MM/YY)\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Security code\" → \"CVC\""
+              },
+              {
+                "kind": "selector",
+                "text": "input[aria-label=\"Security code\"] → input[aria-label=\"CVC\"]"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"I accept the terms and conditions\" → \"I agree to the terms of sale\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > label:nth-of-type(2) > input → #root > main > section:nth-of-type(4) > label > input"
+              },
+              {
+                "kind": "renamed",
+                "text": "\"Place order\" → \"Complete purchase\""
+              },
+              {
+                "kind": "selector",
+                "text": "#root > main > section > div > button:nth-of-type(2) → #root > main > section:nth-of-type(4) > button"
+              },
+              {
+                "kind": "added",
+                "text": "new step: fill textbox \"Cardholder name\""
+              }
+            ],
+            "llmSummary": null,
+            "evidence": null,
+            "secondOpinion": null,
+            "screenshots": {
+              "broke": "comparison/screenshots/rules/20261011072558-bm2y-broke.png",
+              "final": "comparison/screenshots/rules/20261011072558-bm2y-final.png"
+            }
+          },
+          "stage": "D",
+          "title": "Heal accordion redesign",
+          "status": "healed",
+          "mode": "replan",
+          "correct": true,
+          "ms": 2372,
+          "calls": 0,
+          "llmMs": 0,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 0,
+            "rules": 17,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "detail": {
+            "reason": "The UI changed, but even after re-deriving the workflow from the intent the application fails: The workflow was completed but the application reported an error instead of the expected outcome.",
+            "brokeAt": {
+              "step": "fill textbox \"Discount code\"",
+              "problem": "element not found"
+            },
+            "steps": [
+              {
+                "description": "fill textbox \"Promo code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Apply\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Continue to shipping\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Full name\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Email address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Mobile number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Street address\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"City\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Postal code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check radio \"Express delivery (1–2 days) — $9.00\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Continue to payment\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Card number\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Expiry date\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "fill textbox \"Security code\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "check checkbox \"I accept the terms and conditions\"",
+                "source": "rules",
+                "reason": null
+              },
+              {
+                "description": "click button \"Buy now\"",
+                "source": "rules",
+                "reason": null
+              }
+            ],
+            "llmSummary": null,
+            "evidence": {
+              "alerts": [
+                "Something went wrong (error 500). Please try again later."
+              ],
+              "consoleErrors": [
+                "HTTP 500 POST /api/payments/v2",
+                "payment failed: 500"
+              ]
+            },
+            "secondOpinion": null,
+            "screenshots": {
+              "broke": "comparison/screenshots/rules/20261011072600-u4ii-broke.png",
+              "failure": "comparison/screenshots/rules/20261011072600-u4ii-failure.png"
+            }
+          },
+          "stage": "C",
+          "title": "Report real bug (payments 500)",
+          "status": "failed",
+          "category": "application-failure",
+          "correct": true,
+          "ms": 2244,
+          "calls": 0,
+          "llmMs": 0,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 0,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": "The UI changed, but even after re-deriving the workflow from the intent the application fails: The workflow was completed but the application reported an error "
+        }
+      ]
+    }
+  ],
+  "generatedAt": "2026-10-11T07:25:45.924Z"
+}

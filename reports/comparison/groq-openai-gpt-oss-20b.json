@@ -1,0 +1,173 @@
+{
+  "id": "groq-openai-gpt-oss-20b",
+  "label": "Hosted LLM · Groq · openai/gpt-oss-20b",
+  "kind": "llm",
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "hosting": "hosted",
+  "privacy": "Page text and test data are sent to Groq",
+  "setup": "GROQ_API_KEY in .env",
+  "cost": "Free tier with rate limits, then pay-as-you-go",
+  "determinism": "Temperature 0 + seed; plans replay without the model",
+  "domain": "Any UI the model can read",
+  "available": true,
+  "intents": [
+    {
+      "intent": "valid-card",
+      "name": "Complete checkout with a valid credit card",
+      "runs": [
+        {
+          "stage": "A",
+          "title": "Derive plan from intent (original UI)",
+          "status": "passed",
+          "mode": "recorded",
+          "correct": true,
+          "ms": 11503,
+          "calls": 13,
+          "llmMs": 9571,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 13,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "stage": "B",
+          "title": "Heal wizard redesign",
+          "status": "healed",
+          "mode": "replan",
+          "correct": true,
+          "ms": 81234,
+          "calls": 21,
+          "llmMs": 76717,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 13,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "stage": "D",
+          "title": "Heal accordion redesign",
+          "status": "healed",
+          "mode": "replan",
+          "correct": true,
+          "ms": 89713,
+          "calls": 16,
+          "llmMs": 83644,
+          "fallbacks": 1,
+          "steps": {
+            "llm": 13,
+            "rules": 0,
+            "fallback": 1
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "stage": "C",
+          "title": "Report real bug (payments 500)",
+          "status": "failed",
+          "category": "application-failure",
+          "correct": true,
+          "ms": 58124,
+          "calls": 14,
+          "llmMs": 53745,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 0,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": "confirmed",
+          "note": "The UI changed, but even after re-deriving the workflow from the intent the application fails: The workflow was completed but the application reported an error "
+        }
+      ]
+    },
+    {
+      "intent": "full",
+      "name": "Full journey: promo code + express delivery + card",
+      "runs": [
+        {
+          "stage": "A",
+          "title": "Derive plan from intent (original UI)",
+          "status": "passed",
+          "mode": "recorded",
+          "correct": true,
+          "ms": 92249,
+          "calls": 16,
+          "llmMs": 90094,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 16,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "stage": "B",
+          "title": "Heal wizard redesign",
+          "status": "healed",
+          "mode": "replan",
+          "correct": true,
+          "ms": 118708,
+          "calls": 25,
+          "llmMs": 110505,
+          "fallbacks": 0,
+          "steps": {
+            "llm": 16,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "stage": "D",
+          "title": "Heal accordion redesign",
+          "status": "healed",
+          "mode": "replan",
+          "correct": true,
+          "ms": 343455,
+          "calls": 17,
+          "llmMs": 310175,
+          "fallbacks": 3,
+          "steps": {
+            "llm": 12,
+            "rules": 0,
+            "fallback": 3
+          },
+          "secondOpinion": null,
+          "note": null
+        },
+        {
+          "stage": "C",
+          "title": "Report real bug (payments 500)",
+          "status": "failed",
+          "category": "application-failure",
+          "correct": true,
+          "ms": 1220786,
+          "calls": 17,
+          "llmMs": 1215598,
+          "fallbacks": 14,
+          "steps": {
+            "llm": 0,
+            "rules": 0,
+            "fallback": 0
+          },
+          "secondOpinion": "confirmed",
+          "note": "The UI changed, but even after re-deriving the workflow from the intent the application fails: The workflow was completed but the application reported an error "
+        }
+      ]
+    }
+  ],
+  "generatedAt": "2026-10-11T07:00:07.814Z"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "checkout-promo-code",
+  "name": "Apply promo code SAVE10 and complete checkout",
+  "intent": "Apply the promo code SAVE10, then complete checkout with a valid credit card. The discount must be reflected in the total.",
+  "data": {
+    "name": "Asha Verma",
+    "email": "asha@example.com",
+    "phone": "9876543210",
+    "address": "12 MG Road",
+    "city": "Bengaluru",
+    "zip": "560001",
+    "cardNumber": "4242 4242 4242 4242",
+    "expiry": "12/30",
+    "cvv": "123",
+    "promo": "SAVE10"
+  },
+  "expect": {
+    "outcome": "order confirmed",
+    "contains": [
+      "\\$65\\.70"
+    ]
+  }
+}

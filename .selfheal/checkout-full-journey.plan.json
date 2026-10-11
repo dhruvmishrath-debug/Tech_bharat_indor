@@ -1,0 +1,301 @@
+{
+  "testId": "checkout-full-journey",
+  "intent": "Apply promo SAVE10, choose express delivery and pay by card.",
+  "version": 1,
+  "updatedFor": "version-b",
+  "steps": [
+    {
+      "action": "fill",
+      "field": "promo",
+      "value": "{{promo}}",
+      "description": "fill textbox \"Promo code\"",
+      "source": "rules",
+      "locator": {
+        "css": "input[aria-label=\"Promo code\"]",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Promo code",
+          "placeholder": "Promo code",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "click",
+      "description": "click button \"Apply\"",
+      "source": "rules",
+      "locator": {
+        "css": "#root > main > section > aside > div > button",
+        "fingerprint": {
+          "role": "button",
+          "tag": "button",
+          "type": "",
+          "name": "Apply",
+          "placeholder": "",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "click",
+      "description": "click button \"Continue to shipping\"",
+      "source": "rules",
+      "locator": {
+        "css": "#root > main > section > aside > button",
+        "fingerprint": {
+          "role": "button",
+          "tag": "button",
+          "type": "",
+          "name": "Continue to shipping",
+          "placeholder": "",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "name",
+      "value": "{{name}}",
+      "description": "fill textbox \"Full name\"",
+      "source": "rules",
+      "locator": {
+        "css": "input[aria-label=\"Full name\"]",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Full name",
+          "placeholder": "Full name",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "email",
+      "value": "{{email}}",
+      "description": "fill textbox \"Email address\"",
+      "source": "rules",
+      "locator": {
+        "css": "input[aria-label=\"Email address\"]",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "email",
+          "name": "Email address",
+          "placeholder": "you@example.com",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "phone",
+      "value": "{{phone}}",
+      "description": "fill textbox \"Mobile number\"",
+      "source": "rules",
+      "locator": {
+        "css": "input[aria-label=\"Mobile number\"]",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "tel",
+          "name": "Mobile number",
+          "placeholder": "Mobile number",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "address",
+      "value": "{{address}}",
+      "description": "fill textbox \"Street address\"",
+      "source": "rules",
+      "locator": {
+        "css": "input[aria-label=\"Street address\"]",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Street address",
+          "placeholder": "Street address",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "city",
+      "value": "{{city}}",
+      "description": "fill textbox \"City\"",
+      "source": "rules",
+      "locator": {
+        "css": "input[aria-label=\"City\"]",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "City",
+          "placeholder": "City",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "zip",
+      "value": "{{zip}}",
+      "description": "fill textbox \"Postal code\"",
+      "source": "rules",
+      "locator": {
+        "css": "input[aria-label=\"Postal code\"]",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Postal code",
+          "placeholder": "Postal code",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "check",
+      "field": "shipping",
+      "description": "check radio \"Express delivery (1–2 days) — $9.00\"",
+      "source": "rules",
+      "locator": {
+        "css": "#root > main > section > fieldset > label:nth-of-type(2) > input",
+        "fingerprint": {
+          "role": "radio",
+          "tag": "input",
+          "type": "radio",
+          "name": "Express delivery (1–2 days) — $9.00",
+          "placeholder": "",
+          "id": "",
+          "nameAttr": "delivery"
+        }
+      }
+    },
+    {
+      "action": "click",
+      "description": "click button \"Continue to payment\"",
+      "source": "rules",
+      "locator": {
+        "css": "#root > main > section > button:nth-of-type(2)",
+        "fingerprint": {
+          "role": "button",
+          "tag": "button",
+          "type": "",
+          "name": "Continue to payment",
+          "placeholder": "",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "cardNumber",
+      "value": "{{cardNumber}}",
+      "description": "fill textbox \"Card number\"",
+      "source": "rules",
+      "locator": {
+        "css": "input[aria-label=\"Card number\"]",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Card number",
+          "placeholder": "1234 5678 9012 3456",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "expiry",
+      "value": "{{expiry}}",
+      "description": "fill textbox \"Expiry date\"",
+      "source": "rules",
+      "locator": {
+        "css": "input[aria-label=\"Expiry date\"]",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Expiry date",
+          "placeholder": "MM/YY",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "cvv",
+      "value": "{{cvv}}",
+      "description": "fill textbox \"Security code\"",
+      "source": "rules",
+      "locator": {
+        "css": "input[aria-label=\"Security code\"]",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Security code",
+          "placeholder": "CVC",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "check",
+      "description": "check checkbox \"I accept the terms and conditions\"",
+      "source": "rules",
+      "locator": {
+        "css": "#root > main > section > label:nth-of-type(2) > input",
+        "fingerprint": {
+          "role": "checkbox",
+          "tag": "input",
+          "type": "checkbox",
+          "name": "I accept the terms and conditions",
+          "placeholder": "",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "click",
+      "description": "click button \"Place order\"",
+      "source": "rules",
+      "locator": {
+        "css": "#root > main > section > div > button:nth-of-type(2)",
+        "fingerprint": {
+          "role": "button",
+          "tag": "button",
+          "type": "",
+          "name": "Place order",
+          "placeholder": "",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    }
+  ]
+}

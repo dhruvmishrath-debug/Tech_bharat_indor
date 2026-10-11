@@ -1,0 +1,285 @@
+{
+  "testId": "checkout-promo-code",
+  "intent": "Apply the promo code SAVE10, then complete checkout with a valid credit card. The discount must be reflected in the total.",
+  "version": 1,
+  "updatedFor": "version-a",
+  "steps": [
+    {
+      "action": "fill",
+      "field": "promo",
+      "value": "{{promo}}",
+      "description": "fill textbox \"Promo code\"",
+      "source": "rules",
+      "locator": {
+        "css": "input[aria-label=\"Promo code\"]",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Promo code",
+          "placeholder": "Promo code",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "click",
+      "description": "click button \"Apply\"",
+      "source": "rules",
+      "locator": {
+        "css": "#cart > div > button",
+        "fingerprint": {
+          "role": "button",
+          "tag": "button",
+          "type": "",
+          "name": "Apply",
+          "placeholder": "",
+          "id": "",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "click",
+      "description": "click button \"Checkout\"",
+      "source": "rules",
+      "locator": {
+        "css": "#checkout-button",
+        "fingerprint": {
+          "role": "button",
+          "tag": "button",
+          "type": "",
+          "name": "Checkout",
+          "placeholder": "",
+          "id": "checkout-button",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "email",
+      "value": "{{email}}",
+      "description": "fill textbox \"Email address\"",
+      "source": "rules",
+      "locator": {
+        "css": "#email",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "email",
+          "name": "Email address",
+          "placeholder": "",
+          "id": "email",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "phone",
+      "value": "{{phone}}",
+      "description": "fill textbox \"Phone number\"",
+      "source": "rules",
+      "locator": {
+        "css": "#phone",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "tel",
+          "name": "Phone number",
+          "placeholder": "",
+          "id": "phone",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "name",
+      "value": "{{name}}",
+      "description": "fill textbox \"Full name\"",
+      "source": "rules",
+      "locator": {
+        "css": "#full-name",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Full name",
+          "placeholder": "",
+          "id": "full-name",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "address",
+      "value": "{{address}}",
+      "description": "fill textbox \"Street address\"",
+      "source": "rules",
+      "locator": {
+        "css": "#street",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Street address",
+          "placeholder": "",
+          "id": "street",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "city",
+      "value": "{{city}}",
+      "description": "fill textbox \"City\"",
+      "source": "rules",
+      "locator": {
+        "css": "#city",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "City",
+          "placeholder": "",
+          "id": "city",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "zip",
+      "value": "{{zip}}",
+      "description": "fill textbox \"ZIP code\"",
+      "source": "rules",
+      "locator": {
+        "css": "#zip",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "ZIP code",
+          "placeholder": "",
+          "id": "zip",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "cardNumber",
+      "value": "{{cardNumber}}",
+      "description": "fill textbox \"Card number\"",
+      "source": "rules",
+      "locator": {
+        "css": "#card-number",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Card number",
+          "placeholder": "",
+          "id": "card-number",
+          "nameAttr": "card"
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "name",
+      "value": "{{name}}",
+      "description": "fill textbox \"Name on card\"",
+      "source": "rules",
+      "locator": {
+        "css": "#card-name",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Name on card",
+          "placeholder": "",
+          "id": "card-name",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "expiry",
+      "value": "{{expiry}}",
+      "description": "fill textbox \"Expiry (MM/YY)\"",
+      "source": "rules",
+      "locator": {
+        "css": "#expiry",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "Expiry (MM/YY)",
+          "placeholder": "MM/YY",
+          "id": "expiry",
+          "nameAttr": "expiry"
+        }
+      }
+    },
+    {
+      "action": "fill",
+      "field": "cvv",
+      "value": "{{cvv}}",
+      "description": "fill textbox \"CVV\"",
+      "source": "rules",
+      "locator": {
+        "css": "#cvv",
+        "fingerprint": {
+          "role": "textbox",
+          "tag": "input",
+          "type": "text",
+          "name": "CVV",
+          "placeholder": "",
+          "id": "cvv",
+          "nameAttr": "cvv"
+        }
+      }
+    },
+    {
+      "action": "check",
+      "description": "check checkbox \"I agree to the Terms & Conditions\"",
+      "source": "rules",
+      "locator": {
+        "css": "#terms",
+        "fingerprint": {
+          "role": "checkbox",
+          "tag": "input",
+          "type": "checkbox",
+          "name": "I agree to the Terms & Conditions",
+          "placeholder": "",
+          "id": "terms",
+          "nameAttr": ""
+        }
+      }
+    },
+    {
+      "action": "click",
+      "description": "click button \"Pay now\"",
+      "source": "rules",
+      "locator": {
+        "css": "#pay-btn",
+        "fingerprint": {
+          "role": "button",
+          "tag": "button",
+          "type": "submit",
+          "name": "Pay now",
+          "placeholder": "",
+          "id": "pay-btn",
+          "nameAttr": ""
+        }
+      }
+    }
+  ]
+}
